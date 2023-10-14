@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33927.249
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X", "DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X.csproj", "{9EC053C6-063A-4E04-A02C-2D9EFC390872}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EC053C6-063A-4E04-A02C-2D9EFC390872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC053C6-063A-4E04-A02C-2D9EFC390872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC053C6-063A-4E04-A02C-2D9EFC390872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC053C6-063A-4E04-A02C-2D9EFC390872}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DA35732-8648-43EB-877F-5363D61E9DD2}
+	EndGlobalSection
+EndGlobal
