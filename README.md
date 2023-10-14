@@ -1,5 +1,5 @@
 # DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X
-
+## For the latest .NET version use the new lib: DP.EntityFrameworkCore.Extensions.BulkOperators.EF
 This repository provides a batch operator extension for Entity Framework Core 2.x, enabling efficient bulk operations. Please note that this library has been specifically tested with EF Core 2.0.0.
 ## Must config Implement ITableNameResolver
 ```csharp
