@@ -1,3 +1,6 @@
 DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X/obj/
 DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X/bin/
 DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X/.vs/
+bin/
+obj/
+.vs/
