@@ -1,7 +1,7 @@
 # DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X
 
 This repository provides a batch operator extension for Entity Framework Core 2.x, enabling efficient bulk operations. Please note that this library has been specifically tested with EF Core 2.0.0.
-## Must config
+## Must config Implement ITableNameResolver
 ```csharp
 public class MyEntity : ITableNameResolver
     {
@@ -22,6 +22,7 @@ public class MyEntity : ITableNameResolver
 ```
 ## Some configs
 ### Configuration of Insert Fields
+#### Implement IPropertyResolver
 You have the option to limit the fields to be inserted, ensuring that the specified fields cannot be null. To achieve this, the entity should implement the IBulkPropertyResolver interface and define the fields to be included using the GetFields method.
 
 Example of limiting insert fields to Name, IsDeleted, and CreatedDate:
