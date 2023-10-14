@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X.Resolvers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +11,7 @@ namespace DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X
 {
     public static class BulkInsertOperationExtensions
     {
-        public static async Task BulkImportAsync<TEntity>(this string connectionString, string destinationTableName, IEnumerable<TEntity> entities, int batchSize = 10000) where TEntity : class, new()
+        public static async Task BulkImportAsync<TEntity>(this string connectionString, IEnumerable<TEntity> entities, int batchSize = 10000) where TEntity : class, new()
         {
             if (!entities.Any())
                 return;
@@ -19,10 +20,10 @@ namespace DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X
             //// GetTableName from Microsoft.EntityFrameworkCore.Relational package 
             //var destinationTableName = entityType.GetTableName();
 
-            await ExecuseSqlBulkCopy(connectionString, destinationTableName, entities, batchSize);
+            await ExecuseSqlBulkCopy(connectionString, entities, batchSize);
         }
 
-        public static async Task BulkImportAsync<TEntity>(this DbContext dbContext, string connectionString, string destinationTableName, IEnumerable<TEntity> entities, int batchSize = 10000) where TEntity : class, new()
+        public static async Task BulkImportAsync<TEntity>(this DbContext dbContext, string connectionString, IEnumerable<TEntity> entities, int batchSize = 10000) where TEntity : class, new()
         {
             if (!entities.Any())
                 return;
@@ -31,11 +32,15 @@ namespace DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X
             //// GetTableName from Microsoft.EntityFrameworkCore.Relational package 
             //var destinationTableName = entityType.GetTableName();
 
-            await ExecuseSqlBulkCopy(connectionString, destinationTableName, entities, batchSize);
+            await ExecuseSqlBulkCopy(connectionString, entities, batchSize);
         }
 
-        private static async Task ExecuseSqlBulkCopy<TEntity>(string connectionString, string destinationTableName, IEnumerable<TEntity> entities, int batchSize) where TEntity : class, new()
+        private static async Task ExecuseSqlBulkCopy<TEntity>(string connectionString, IEnumerable<TEntity> entities, int batchSize) where TEntity : class, new()
         {
+            var destinationTableName = "";
+            if (typeof(ITableNameResolver).IsAssignableFrom(typeof(TEntity)))
+                destinationTableName = (new TEntity() as ITableNameResolver).GetTableName();
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(connection)

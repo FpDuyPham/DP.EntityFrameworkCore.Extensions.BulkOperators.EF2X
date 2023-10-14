@@ -4,3 +4,4 @@ DP.EntityFrameworkCore.Extensions.BulkOperators.EF2X/.vs/
 bin/
 obj/
 .vs/
+.idea/
